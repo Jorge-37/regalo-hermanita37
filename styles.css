@@ -1,0 +1,231 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body{
+  height:100vh;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background: linear-gradient(135deg, #ffd6e0, #e0c3fc, #fbc2eb);
+  background-size: 400% 400%;
+  animation: fondo 10s ease infinite;
+}
+
+@keyframes fondo{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+/* TITULO */
+.titulo{
+  font-family:'Great Vibes', cursive;
+  font-size:60px;
+  color:white;
+  text-shadow:0 0 20px rgba(255,255,255,0.7);
+  margin-bottom:40px;
+  text-align:center;
+}
+
+/* CONTENEDOR */
+.contenedor{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  z-index:2;
+}
+
+/* CAJA */
+.caja-wrapper{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  cursor:pointer;
+  transform: scale(0.9);
+}
+
+.caja{
+  position: relative;
+  width:150px;
+  height:120px;
+  display:flex;
+  justify-content:center;
+  align-items:flex-end;
+  animation: flotar 2s infinite ease-in-out;
+}
+
+@keyframes flotar{
+  0%,100%{ transform: translateY(0);}
+  50%{ transform: translateY(-10px);}
+}
+
+/* BASE */
+.regalos{
+  background: linear-gradient(#ff4d6d, #ff4d6d) 50% 50% / 30px 100% no-repeat, #fff0f3;
+  border-radius:16px;
+  width:120px;
+  height:80px;
+  position:absolute;
+  bottom:0;
+}
+
+/* TAPA */
+.regalo{
+  position:absolute;
+  bottom:75px;
+  width:135px;
+  height:35px;
+  border-radius:10px;
+  background: linear-gradient(#ff4d6d, #ff4d6d) 50% 50% / 30px 100% no-repeat, #ffe4ea;
+  transition:0.5s;
+}
+
+/* EFECTO AL ABRIR */
+.caja.open .regalo{
+  transform: translateY(-80px) rotate(-10deg);
+}
+
+/* MOÑO */
+.cinta-de-regalo{
+  position:absolute;
+  top:-15px;
+  left:50%;
+  transform: translateX(-50%);
+  width:30px;
+  height:15px;
+  z-index:3;
+}
+
+.cinta-de-regalo-centro{
+  width:100%;
+  height:100%;
+  background:#d00000;
+  border-radius:12px;
+}
+
+.cinta-de-regalo-izquierda,
+.cinta-de-regalo-derecha{
+  position:absolute;
+  width:35px;
+  height:55px;
+  background:#ff4d6d;
+  top:3px;
+}
+
+.cinta-de-regalo-izquierda{
+  right:100%;
+  transform: rotate(35deg);
+  border-radius:20px;
+}
+
+.cinta-de-regalo-derecha{
+  left:100%;
+  transform: rotate(-35deg);
+  border-radius:20px;
+}
+
+/* ESTRELLAS */
+.icono-estrella{
+  position:absolute;
+  width:20px;
+  height:20px;
+  background:yellow;
+  clip-path: polygon(50% 0, 65% 35%, 100% 50%, 65% 65%, 50% 100%, 35% 65%, 0 50%, 35% 35%);
+  animation: estrellas 1.5s infinite;
+}
+
+@keyframes estrellas{
+  0%{transform:scale(0);}
+  50%{transform:scale(1);}
+  100%{transform:scale(0);}
+}
+
+.estrella1{ top:10px; left:120px;}
+.estrella2{ top:0px; left:80px;}
+.estrella3{ top:50px; left:30px;}
+.estrella4{ bottom:10px; left:10px;}
+.estrella5{ top:20px; left:10px;}
+
+/* CARTA */
+.envoltura-carta{
+  position: fixed;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background: rgba(0,0,0,0.6);
+  opacity:0;
+  pointer-events:none;
+  transition:0.5s;
+  z-index:999;
+}
+
+.envoltura-carta.activo{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.carta{
+  position:relative;
+  width:340px;
+  height:280px;
+  background:white;
+  border-radius:10px;
+  overflow:hidden;
+}
+
+.tapa{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:#ffb3c6;
+  transform-origin: top;
+  transition:0.6s;
+  z-index:2;
+}
+
+.envoltura-carta.activo .tapa{
+  transform: rotateX(180deg);
+}
+
+.contenido{
+  position:absolute;
+  padding:20px;
+  text-align:left;
+  z-index:1;
+}
+
+.contenido h2{
+  font-family: Arial, sans-serif;
+  color:#ff4d6d;
+}
+
+.contenido p{
+  margin-top:10px;
+  color:#555;
+}
+
+.contenido span{
+  display:block;
+  margin-top:10px;
+  color:#252424;
+}
+.contenido span1{
+     display:block;
+     margin-top:10px;
+     color:#252424;
+     text-align: right;
+}
+
+/* CONFETI */
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:0;
+}
